@@ -25,6 +25,8 @@
     </tbody>
   </table>
 </form>
-
 <button (click)="addUser()" class="btn btn-primary mr-5">Add new</button>
 <button (click)="save()" class="btn btn-primary">Save</button>
+<div>
+{{userForm.value | json}}
+</div>

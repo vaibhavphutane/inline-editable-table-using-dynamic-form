@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormArray, FormGroup } from '../../node_modules/@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,7 @@ import { FormBuilder, FormArray, FormGroup } from '../../node_modules/@angular/f
 export class AppComponent implements OnInit {
 
 
-  constructor(private _fb: FormBuilder) {
+  constructor() {
 
   }
 

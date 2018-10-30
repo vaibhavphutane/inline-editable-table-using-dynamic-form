@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '../../../node_modules/@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-table',
@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '../../../node_mod
   styleUrls: ['./user-table.component.scss']
 })
 export class UserTableComponent implements OnInit {
+
   userForm: FormGroup;
 
   constructor(private fb: FormBuilder) {}
@@ -36,7 +37,7 @@ export class UserTableComponent implements OnInit {
   }
 
   save() {
-    console.log(this.userForm.value);
+    console.log(this.userForm.valid)
   }
 
 }

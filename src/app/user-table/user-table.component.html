@@ -13,7 +13,8 @@
           </td>
           <td class="form-group">
             <input type="text" class="form-control" formControlName="email" placeholder="email">
-            <span class="text-danger" *ngIf="control.get('email').touched && control.get('email').touched">email required</span>
+            <span class="text-danger" *ngIf="control.get('email').touched && control.get('email').errors?.required">email required</span>
+             <span class="text-danger" *ngIf="control.get('email').touched && !control.get('email').errors?.required && control.get('email').errors?.validEmail">Please enter correct email domain </span>
           </td>
           <td  class="form-group">
             <input type="text" class="form-control" formControlName="mobNumber" placeholder="mobile number">

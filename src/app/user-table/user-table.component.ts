@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { validateEmail } from './user-table.validators';
 
 @Component({
   selector: 'app-user-table',
@@ -7,6 +8,23 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
   styleUrls: ['./user-table.component.scss']
 })
 export class UserTableComponent implements OnInit {
+  employee = [
+    {
+      name: 'tuna',
+      email: 'vscode@gmail.com',
+      mobNumber: 12346
+    },
+    {
+      name: 'node',
+      email: 'nodejs@gmail.com',
+      mobNumber: 1234
+    },
+    {
+      name: 'google',
+      email: 'google@gmail.com',
+      mobNumber: 123461
+    }
+  ];
 
   userForm: FormGroup;
 
@@ -14,21 +32,34 @@ export class UserTableComponent implements OnInit {
 
   ngOnInit() {
     this.userForm = this.fb.group({
-       users: this.fb.array([])
+      users: this.fb.array([])
     });
+    this.getEmployee();
+  }
+
+  getEmployee() {
+    const control = <FormArray>this.userForm.get('users');
+    for (const emp of this.employee) {
+      const grp = this.fb.group({
+        name: [emp.name, Validators.required],
+        email: [emp.email, [Validators.required, validateEmail]],
+        mobNumber: [emp.mobNumber]
+      });
+      control.push(grp);
+    }
   }
 
   initiatForm(): FormGroup {
     return this.fb.group({
       name: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, validateEmail]],
       mobNumber: ['']
     });
   }
 
   addUser() {
-   const control = <FormArray>this.userForm.get('users');
-   control.push(this.initiatForm());
+    const control = <FormArray>this.userForm.get('users');
+    control.push(this.initiatForm());
   }
 
   remove(index: number) {
@@ -37,7 +68,6 @@ export class UserTableComponent implements OnInit {
   }
 
   save() {
-    console.log(this.userForm.valid)
+    console.log(this.userForm.valid);
   }
-
 }

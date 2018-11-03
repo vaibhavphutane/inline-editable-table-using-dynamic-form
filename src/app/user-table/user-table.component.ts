@@ -12,17 +12,20 @@ export class UserTableComponent implements OnInit {
     {
       name: 'tuna',
       email: 'vscode@gmail.com',
-      mobNumber: 12346
+      mobNumber: 12346,
+      dob: new Date()
     },
     {
       name: 'node',
       email: 'nodejs@gmail.com',
-      mobNumber: 1234
+      mobNumber: 1234,
+      dob: new Date()
     },
     {
       name: 'google',
       email: 'google@gmail.com',
-      mobNumber: 123461
+      mobNumber: 123461,
+      dob: new Date()
     }
   ];
 
@@ -43,7 +46,8 @@ export class UserTableComponent implements OnInit {
       const grp = this.fb.group({
         name: [emp.name, Validators.required],
         email: [emp.email, [Validators.required, validateEmail]],
-        mobNumber: [emp.mobNumber]
+        mobNumber: [emp.mobNumber],
+        dob: [emp.dob, Validators.required]
       });
       control.push(grp);
     }
@@ -53,7 +57,8 @@ export class UserTableComponent implements OnInit {
     return this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, validateEmail]],
-      mobNumber: ['']
+      mobNumber: [''],
+      dob: ['']
     });
   }
 

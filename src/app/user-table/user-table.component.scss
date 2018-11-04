@@ -1,0 +1,38 @@
+//Text
+$white:#fff;
+$text-light:#fff;
+$main-link:#35c6f7;
+
+//Background
+$bg-dark:#333545;
+$bg-body:#f9f9f9;
+$primary-text:#333;
+$bg-dark:#141b20;
+$theme-second: #0182ba;
+$gb-sub-link:#494b5f;
+
+//Buttons
+$btn-info:#0290c0;
+$btn-info-over:#31b0d5;
+
+h3{
+    font-size: 20px;
+}
+.pt06{
+    padding-top: 6px;
+}
+.search-scroll{
+    width: 100%;
+    max-height: 295px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.nav-header{
+    margin-bottom: 60px;
+}
+nav{
+    padding-bottom: 10px;
+}
+.mat-checkbox-layout{
+    font-weight: normal
+}

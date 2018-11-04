@@ -1,7 +1,7 @@
 import { AbstractControl } from '@angular/forms';
 
 export function validateEmail(control: AbstractControl) {
-  if (!control.value.includes('@gmail.com')) {
+  if (!control.value.endsWith('@gmail.com')) {
     return {validEmail: true};
   }
   return null;

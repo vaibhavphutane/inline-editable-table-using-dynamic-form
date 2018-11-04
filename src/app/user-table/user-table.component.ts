@@ -46,7 +46,7 @@ export class UserTableComponent implements OnInit {
       const grp = this.fb.group({
         name: [emp.name, Validators.required],
         email: [emp.email, [Validators.required, validateEmail]],
-        mobNumber: [emp.mobNumber],
+        mobNumber: [emp.mobNumber, [Validators.min(10)]],
         dob: [emp.dob, Validators.required]
       });
       control.push(grp);
@@ -56,10 +56,14 @@ export class UserTableComponent implements OnInit {
   initiatForm(): FormGroup {
     return this.fb.group({
       name: ['', Validators.required],
-      email: ['', [Validators.required, validateEmail]],
-      mobNumber: [''],
+      email: ['', [Validators.required, validateEmail, Validators.email]],
+      mobNumber: ['', [Validators.min(10)]],
       dob: ['']
     });
+  }
+
+  get getFormData(): FormArray {
+    return <FormArray>this.userForm.get('users');
   }
 
   addUser() {
@@ -73,6 +77,7 @@ export class UserTableComponent implements OnInit {
   }
 
   save() {
-    console.log(this.userForm.valid);
+    console.log('isValid', this.userForm.valid);
+    console.log('value', this.userForm.value);
   }
 }
